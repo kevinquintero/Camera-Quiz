@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+background-color: grey;
+font-family: Helvetica;
+background-image:url(background.jpg)
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+#main {
+width: 80%;
+max-width: 950px;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+
+#header {
+margin-top: 0;
+border: 2px solid black;
+padding: 5px;
+height: 250px;
+background: beige;
+background-image: url("camera.gif");
+color: white;
+}
+
+</style>
+<title></title>
+</head>
+<body>
+<div id="main">
+<div id="header">
+<h1></h1>
+</div>
+<p><h1>Which camera is right for your creative need?</h1></p>
+
+<form  id="form1" action=" ">
+
+<p><h3>What do you do more often? </h3></p>
+<select id="doesntmatter">
+  <option value="0">Choose One</option>
+  <option value="0">Video Stuff</option>
+    <option value="0">Photograph Stuff</option>
+</select>
+
+
+<p><h3>What is your favorite thing to photograph/film?</h3></p>
+<input type="radio" name="variable" value="1" />Landscapes<br />
+<input type="radio" name="variable" value="1" />Portraits <br />
+<input type="radio" name="variable" value="4" />Selfies<br />
+<input type="radio" name="variable" value="1" />Random Stuff in the Studio<br />
+<input type="radio" name="variable" value="3" />Everything!<br />
+<input type="radio" name="variable" value="5" />Action<br />
+
+
+<p><h3>Camera weight preference. How strong/willing are you?</h3></p>
+<input type="radio" name="sub" value="1" />I can carry a big camera all day everyday<br />
+<input type="radio" name="sub" value="3" />I can carry a camera, but rather not. It's annoying.<br />
+<input type="radio" name="sub" value="4" />I can't. I'd get too tired. <br />
+<input type="radio" name="sub" value="5" />I'd like something light, portable and versatile. <br />
+
+<p><h3>If you work with video, do you prefer 4K?</h3></p>
+<input type="radio" name="con" value="1" /> No, still shooting regular 1080p and 720p<br />
+<input type="radio" name="con" value="3" />Yes! 4K is newest and greatest<br />
+<input type="radio" name="con" value="4" />I don't care, clear enough to see it on my computer or phone.<br />
+
+<p><h3>What enviorment do you shoot in?</h3></p>
+<input type="radio" name="ifstate" value="3" />Dry, air conditioned mostly. Outside every once in awhile. <br />
+<input type="radio" name="ifstate" value="1" />Wet or dry, rain or shine!<br />
+<input type="radio" name="ifstate" value="5" />Underwater, out of water, everywhere! <br />
+
+<p><h3>Do you prefer detailed, close ups or wide shots? </h3></p>
+<input type="radio" name="wide" value="1" />Both on occasion. Don't have a preference. <br />
+<input type="radio" name="wide" value="5" />Wide all the way! The more the better<br />
+<input type="radio" name="wide" value="2" />Up close and personal. I love capturing emotion and detail<br />
+
+<p><h3>What color combination do you like best?</h3> </p>
+<input type="radio" name="color" value="1" />Red & Black<br />
+<input type="radio" name="color" value="2" />Gold & Black<br />
+<input type="radio" name="color" value="3" />Orange & Black <br />
+<input type="radio" name="color" value="5" />Grey & Black<br />
+<input type="radio" name="color" value="4" />I don't have a preference. Why does this matter lol? <br />
+
+<br />
+<input type="submit" value="Submit">
+</form>
+
+
+<p><span id="grade">__</span></p>
+<p id="grade2"></p>
+</div><!-- close main div -->
+
+
+<script>
+document.getElementById("form1").onsubmit=function() {
+	
+    variablevar = document.getElementsByName("variable");
+	for(i=0; i<variablevar.length; i++) {
+	   if (variablevar[i].checked) {
+	   vscore = parseInt(variablevar[i].value);
+	   }
+	   }//end for
+	   
+	subvar = document.getElementsByName("sub");
+	   for(i=0; i<subvar.length; i++) {
+	   if (subvar[i].checked) {
+	   sscore = parseInt(subvar[i].value);
+	   }
+	   }//end for
+	   
+	convar = document.getElementsByName("con");
+	   for(i=0; i<convar.length; i++) {
+	   if (convar[i].checked) {
+	   cscore = parseInt(convar[i].value);
+	   }
+	   }//end for
+	   
+	ifvar = document.getElementsByName("ifstate");
+	   for(i=0; i<ifvar.length; i++) {
+	   if (ifvar[i].checked) {
+	   ifcore = parseInt(ifvar[i].value);
+	   }
+	   }//end for
+	   
+	widevar = document.getElementsByName("wide");
+	   for(i=0; i<widevar.length; i++) {
+	   if (widevar[i].checked) {
+	   wicore = parseInt(widevar[i].value);
+	   }
+	   }//end for
+	   
+	covar = document.getElementsByName("color");
+	   for(i=0; i<covar.length; i++) {
+	   if (covar[i].checked) {
+	   cocore = parseInt(covar[i].value);
+	   }
+	   }//end for
+	   
+	
+   	   
+	result = vscore + sscore + cscore +ifcore + wicore + cocore;
+	document.getElementById("grade").innerHTML = result;
+	if (result == 6) {result2 = "Canon DSLR all the way!<br /><img src='canon.gif'  />"};
+    if (result == 7) {result2 = "Nikon DSLR forsure!.<br /><img src='nikon.gif' />"};
+    if (result == 16) {result2 = "A Sony a7 series caemra is your bestfriend.<br /><img src='sony.gif'  />"};
+    if (result == 20) {result2 = "And iPhone or Android. You don't need anything esle.<br /><img src='iphone.gif'  />"};
+    if (result == 28) {result2 = "GoPro! You don't need anything more for your use. <br /><img src='gopro.gif'  />"};
+    //if (result != 6 && != 7 && !=16 && != 20 && != 28) {result2 = "Smartphone or GoPro! You don't anything more for your use. <br /><img src='gopro.gif'  />"};
+
+    document.getElementById("grade2").innerHTML = result2; 
+	   
+
+
+return false; // required to not refresh the page; just leave this here
+} //this ends the submit function
+
+</script>
+
+
+
+</body>
+</html>
